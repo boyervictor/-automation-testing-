@@ -1,5 +1,5 @@
 # -automation-testing-
-# 🧪 Proyecto QA Automation – Cypress para App Bancaria
+# 🧪 Proyecto QA Automation – Cypress para proyecto de Banca financiera
 
 Este repositorio contiene ejemplos de pruebas automatizadas con Cypress en distintos módulos bancarios:
 
