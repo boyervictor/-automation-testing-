@@ -7,7 +7,8 @@ Datos de entrada	Valores usados para la prueba
 Resultado esperado	Qué debería suceder
 Estado	(Para marcar luego: "Ejecutado", "Pendiente", etc.)
 
-Casos Positivos (CAH-001 a CAH-010)
+MÓDULO: Caja de Ahorro
+🟢 Casos Positivos (CAH-001 a CAH-010)
 CAH-001 – Alta de caja de ahorro con datos válidos
 
 CAH-002 – Consulta de saldo actual
@@ -28,7 +29,7 @@ CAH-009 – Reversión de transferencia dentro de los 5 minutos
 
 CAH-010 – Cierre voluntario de caja de ahorro
 
-Casos Negativos (CAH-011 a CAH-015)
+🔴 Casos Negativos (CAH-011 a CAH-015)
 CAH-011 – Intentar crear cuenta sin ingresar DNI
 
 CAH-012 – Transferencia con monto superior al saldo disponible
@@ -39,7 +40,7 @@ CAH-014 – Consulta de saldo sin autenticación
 
 CAH-015 – Doble clic en el botón de creación causando error
 
-Casos de Seguridad (CAH-016 a CAH-020)
+🔐 Casos de Seguridad (CAH-016 a CAH-020)
 CAH-016 – Intento de acceso a cuenta sin token
 
 CAH-017 – Inyección SQL en el campo alias
