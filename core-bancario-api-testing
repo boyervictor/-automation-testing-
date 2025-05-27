@@ -1,0 +1,14 @@
+INTEGRACIÓN DE POSTMAN + NEWMAN + JENKINS (PASO A PASO)
+✅ 1. Requisitos previos
+Antes de comenzar:
+
+Tener instalado Jenkins (puede ser local o en un servidor).
+
+Tener una colección Postman exportada (archivo .postman_collection.json).
+
+Tener un entorno Postman exportado (archivo .postman_environment.json).
+
+Tener Node.js instalado (necesario para instalar Newman).
+
+Tener acceso a los plugins requeridos (Post Build, JIRA o Azure DevOps).
+
