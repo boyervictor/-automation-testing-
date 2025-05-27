@@ -1,0 +1,8 @@
+Campo	Descripción
+ID	Identificador del caso (ej. CAH-001 para Caja de Ahorro)
+Módulo	Nombre del módulo (Caja de Ahorro, etc.)
+Tipo de prueba	Positiva / Negativa / Seguridad
+Descripción	Qué se está validando
+Datos de entrada	Valores usados para la prueba
+Resultado esperado	Qué debería suceder
+Estado	(Para marcar luego: "Ejecutado", "Pendiente", etc.)
