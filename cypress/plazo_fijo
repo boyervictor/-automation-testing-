@@ -1,0 +1,43 @@
+MÓDULO: Plazo Fijo
+🟢 Casos Positivos (PF-001 a PF-010)
+PF-001 – Creación de plazo fijo tradicional con datos válidos
+
+PF-002 – Consulta de tasa vigente antes de constituir el plazo
+
+PF-003 – Constitución con capitalización automática
+
+PF-004 – Cancelación anticipada permitida según condiciones
+
+PF-005 – Visualización de intereses generados
+
+PF-006 – Recepción de comprobante por mail
+
+PF-007 – Prórroga automática al vencimiento
+
+PF-008 – Consulta del historial de plazos fijos constituidos
+
+PF-009 – Constitución en moneda extranjera (USD)
+
+PF-010 – Confirmación con doble factor antes de crear el PF
+
+🔴 Casos Negativos (PF-011 a PF-015)
+PF-011 – Constitución sin monto mínimo
+
+PF-012 – Cancelación anticipada en plazo no permitido
+
+PF-013 – Error al seleccionar fecha inválida de vencimiento
+
+PF-014 – Tasa no disponible para el plazo elegido
+
+PF-015 – Intento de crear dos plazos fijos simultáneamente con mismos fondos
+
+🔐 Casos de Seguridad (PF-016 a PF-020)
+PF-016 – Validación de token para confirmar constitución
+
+PF-017 – Manipulación del HTML para cambiar tasa visible
+
+PF-018 – Acceso a datos de otra cuenta mediante ID modificada
+
+PF-019 – Auditoría de operaciones guardadas con IP y timestamp
+
+PF-020 – Cifrado de datos sensibles en tránsito (HTTPS)
