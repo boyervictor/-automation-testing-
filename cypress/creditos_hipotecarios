@@ -1,0 +1,43 @@
+MÓDULO: Créditos Hipotecarios
+🟢 Casos Positivos (CH-001 a CH-010)
+CH-001 – Solicitud de crédito con todos los campos obligatorios completos y válidos
+
+CH-002 – Simulación de crédito con tasa fija y variable
+
+CH-003 – Carga de documentación en formato PDF correctamente
+
+CH-004 – Visualización de cronograma de pagos generado automáticamente
+
+CH-005 – Consulta de estado del trámite de solicitud
+
+CH-006 – Confirmación de aceptación de oferta preaprobada
+
+CH-007 – Envío de notificación por mail al avanzar una etapa del trámite
+
+CH-008 – Generación de número de expediente único por solicitud
+
+CH-009 – Descarga de simulación en archivo PDF
+
+CH-010 – Consulta de historial de créditos previos desde el portal
+
+🔴 Casos Negativos (CH-011 a CH-015)
+CH-011 – Solicitud con monto menor al permitido
+
+CH-012 – Archivo adjunto con formato no admitido (ej: .exe)
+
+CH-013 – Simulación con tasa fuera de rango permitido
+
+CH-014 – Solicitud sin datos de contacto
+
+CH-015 – Subida de archivo con nombre demasiado largo (>100 caracteres)
+
+🔐 Casos de Seguridad (CH-016 a CH-020)
+CH-016 – Subida de archivo infectado o potencialmente malicioso
+
+CH-017 – Prueba de XSS en campo “Observaciones”
+
+CH-018 – Acceso a expediente de otra persona sin autorización
+
+CH-019 – Validación de token JWT para acceder al portal
+
+CH-020 – Cierre automático de sesión al detectar cambio de IP
