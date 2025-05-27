@@ -6,3 +6,46 @@ Descripción	Qué se está validando
 Datos de entrada	Valores usados para la prueba
 Resultado esperado	Qué debería suceder
 Estado	(Para marcar luego: "Ejecutado", "Pendiente", etc.)
+
+Casos Positivos (CAH-001 a CAH-010)
+CAH-001 – Alta de caja de ahorro con datos válidos
+
+CAH-002 – Consulta de saldo actual
+
+CAH-003 – Realización de transferencia entre cuentas propias
+
+CAH-004 – Visualización de movimientos últimos 30 días
+
+CAH-005 – Edición de alias de cuenta
+
+CAH-006 – Descarga de resumen en PDF
+
+CAH-007 – Adición de cuenta como favorita
+
+CAH-008 – Activación de alertas por email
+
+CAH-009 – Reversión de transferencia dentro de los 5 minutos
+
+CAH-010 – Cierre voluntario de caja de ahorro
+
+Casos Negativos (CAH-011 a CAH-015)
+CAH-011 – Intentar crear cuenta sin ingresar DNI
+
+CAH-012 – Transferencia con monto superior al saldo disponible
+
+CAH-013 – Alias de cuenta con caracteres inválidos
+
+CAH-014 – Consulta de saldo sin autenticación
+
+CAH-015 – Doble clic en el botón de creación causando error
+
+Casos de Seguridad (CAH-016 a CAH-020)
+CAH-016 – Intento de acceso a cuenta sin token
+
+CAH-017 – Inyección SQL en el campo alias
+
+CAH-018 – Validar que los datos de la cuenta estén encriptados
+
+CAH-019 – Expiración de sesión tras 5 minutos de inactividad
+
+CAH-020 – Reintento fallido de login más de 3 veces bloquea la cuenta
