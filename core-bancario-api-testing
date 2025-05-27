@@ -12,3 +12,146 @@ Tener Node.js instalado (necesario para instalar Newman).
 
 Tener acceso a los plugins requeridos (Post Build, JIRA o Azure DevOps).
 
+⚙️ 2. Instalar Newman (CLI de Postman) en el servidor de Jenkins
+verificar con newman -v 
+verificar con newman -v
+
+📁 3. Estructura del proyecto en Jenkins
+pipeline {
+    agent any
+    environment {
+        COLLECTION = "Postman/Colecciones/caja_de_ahorro.postman_collection.json"
+        ENVIRONMENT = "Postman/Entornos/ambiente_local.postman_environment.json"
+        REPORT = "Tests/Newman/caja_de_ahorro_test_report.html"
+    }
+    stages {
+        stage('Preparar entorno') {
+            steps {
+                echo "Preparando entorno de ejecución..."
+                sh 'npm install -g newman'
+            }
+        }
+        stage('Ejecutar tests Postman') {
+            steps {
+                echo "Ejecutando colección de Postman con Newman..."
+                sh """
+                    newman run ${COLLECTION} \
+                        -e ${ENVIRONMENT} \
+                        --reporters cli,html \
+                        --reporter-html-export ${REPORT}
+                """
+            }
+        }
+        stage('Publicar Reporte') {
+            steps {
+                echo "Publicando el reporte HTML generado..."
+                publishHTML (target: [
+                    reportDir: 'Tests/Newman',
+                    reportFiles: 'caja_de_ahorro_test_report.html',
+                    reportName: 'Reporte de Pruebas Caja de Ahorro'
+                ])
+            }
+        }
+    }
+}
+📝 4. Jenkinsfile de ejemplo
+pipeline {
+    agent any
+    environment {
+        COLLECTION = "Postman/Colecciones/caja_de_ahorro.postman_collection.json"
+        ENVIRONMENT = "Postman/Entornos/ambiente_local.postman_environment.json"
+        REPORT = "Tests/Newman/caja_de_ahorro_test_report.html"
+    }
+    stages {
+        stage('Preparar entorno') {
+            steps {
+                echo "Preparando entorno de ejecución..."
+                sh 'npm install -g newman'
+            }
+        }
+        stage('Ejecutar tests Postman') {
+            steps {
+                echo "Ejecutando colección de Postman con Newman..."
+                sh """
+                    newman run ${COLLECTION} \
+                        -e ${ENVIRONMENT} \
+                        --reporters cli,html \
+                        --reporter-html-export ${REPORT}
+                """
+            }
+        }
+        stage('Publicar Reporte') {
+            steps {
+                echo "Publicando el reporte HTML generado..."
+                publishHTML (target: [
+                    reportDir: 'Tests/Newman',
+                    reportFiles: 'caja_de_ahorro_test_report.html',
+                    reportName: 'Reporte de Pruebas Caja de Ahorro'
+                ])
+            }
+        }
+    }
+}
+📦 5. Configurar Job en Jenkins (Interfaz)
+Ve a Jenkins → Crear nuevo item → Selecciona "Pipeline".
+
+En la sección Pipeline > Definition, elige: Pipeline script from SCM.
+
+SCM: Git
+
+URL del repositorio (ej. https://github.com/usuario/core-bancario-api-testing.git)
+
+Branch: main o el que corresponda.
+
+Jenkins tomará automáticamente el Jenkinsfile.
+
+🔗 INTEGRAR CON JIRA (OPCIONAL)
+📦 Plugins necesarios
+Atlassian Jira Software Cloud Plugin
+
+🔐 Configurar credenciales de JIRA
+Ir a Jenkins > Manage Jenkins > Credentials > Global.
+
+Añadir un "Username with password" o API Token.
+
+🛠️ Añadir paso al Jenkinsfile (notificar ticket)
+stage('Actualizar JIRA') {
+    steps {
+        script {
+            def issueKey = "PROY-123"
+            def mensaje = "Se ejecutaron pruebas para Caja de Ahorro. Ver resultados adjuntos."
+            sh "curl -X POST -H 'Content-Type: application/json' -u usuario:token \
+                --data '{\"body\": \"${mensaje}\"}' \
+                https://tuinstanciajira.atlassian.net/rest/api/2/issue/${issueKey}/comment"
+        }
+    }
+}
+
+🔗 INTEGRAR CON AZURE DEVOPS (OPCIONAL)
+Azure DevOps Services Plugin
+
+🔐 Configurar conexión
+Ir a Manage Jenkins > Configure System.
+
+Buscar sección Azure DevOps.
+
+Agregar nueva conexión:
+
+URL de la organización.
+
+Personal Access Token (PAT) generado desde Azure.
+
+🎯 Jenkinsfile para Azure DevOps
+Para vincular con pipelines o Work Items:
+stage('Notificar Azure DevOps') {
+    steps {
+        echo "Enviando resultados a Azure DevOps..."
+        sh """
+        curl -X PATCH \
+        -H 'Content-Type: application/json' \
+        -H 'Authorization: Basic base64(username:PAT)' \
+        --data '{ "fields": { "System.History": "Pruebas ejecutadas desde Jenkins. Ver reporte HTML." } }' \
+        https://dev.azure.com/tuorg/proyecto/_apis/wit/workitems/1234?api-version=6.0
+        """
+    }
+}
